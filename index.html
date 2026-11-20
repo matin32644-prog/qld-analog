@@ -10,11 +10,17 @@
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;word-break:keep-all}
 main{max-width:640px;margin:0 auto;padding:20px 16px 48px}
 h1{font-size:25px;margin:4px 0 2px;line-height:1.3}
-h2{font-size:18px;margin:28px 0 8px}
+h2{font-size:18px;margin:26px 0 8px}
 .sub{color:var(--mute);font-size:14px;margin:0}
-.band{display:none;background:var(--hotbg);color:var(--hot);border-radius:12px;padding:10px 14px;margin:14px 0;font-size:14px}
+.nav{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;gap:6px;align-items:center;padding:10px 0;margin-top:8px}
+.nav button,.nav input{font:inherit;font-size:15px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;height:40px}
+.nav button{min-width:44px;padding:0 10px;cursor:pointer}
+.nav button:disabled{opacity:.35;cursor:default}
+.nav input{flex:1;min-width:0;padding:0 8px}
+.nav .last{background:var(--new);color:var(--bg);border-color:var(--new);font-weight:700}
+.band{display:none;background:var(--hotbg);color:var(--hot);border-radius:12px;padding:10px 14px;margin:10px 0;font-size:14px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 16px 14px;margin:12px 0}
-.today{border:3px solid var(--new);background:var(--newbg)}
+.ref{border:3px solid var(--new);background:var(--newbg)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}
 .chip{font-size:13px;border-radius:999px;padding:3px 10px;background:var(--grey);color:var(--ink)}
 .chip.on{background:var(--hot);color:var(--bg);font-weight:700}
@@ -24,6 +30,7 @@ h2{font-size:18px;margin:28px 0 8px}
 .rk{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .no{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--bg);font-weight:800;text-align:center;line-height:30px;flex:none}
 .dt{font-size:19px;font-weight:800}
+.dt a{color:inherit;text-decoration:none;border-bottom:1px dashed var(--faint)}
 .dist{font-size:13px;color:var(--mute)}
 .diff{font-size:12px;color:var(--hot);margin-left:auto}
 .cmp{display:grid;grid-template-columns:1fr auto auto;gap:2px 12px;margin:10px 0 6px;font-size:14px;font-variant-numeric:tabular-nums}
@@ -35,108 +42,73 @@ h2{font-size:18px;margin:28px 0 8px}
 .o b{font-size:17px;font-variant-numeric:tabular-nums}
 .o.up{background:var(--upbg)} .o.up b{color:var(--up)}
 .o.dn{background:var(--dnbg)} .o.dn b{color:var(--dn)}
+.lab{font-size:13px;color:var(--mute);margin:12px 0 0}
 .sum{display:grid;grid-template-columns:1fr repeat(3,auto);gap:4px 12px;font-size:14px;font-variant-numeric:tabular-nums}
 .sum .hd{color:var(--faint);font-size:12px;text-align:right} .sum .k{color:var(--mute)} .sum .v{text-align:right;font-weight:700}
+.sum .me{color:var(--new);font-weight:800}
 .note{font-size:13px;color:var(--mute);margin:8px 0 0}
 details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 16px;margin:12px 0}
 summary{font-weight:700;cursor:pointer}
 details li{font-size:14px;margin:4px 0}
 .foot{font-size:12px;color:var(--faint);margin-top:24px;line-height:1.6}
-</style></head>
-<body data-built="2026-11-20T18:20:53+09:00" data-bar="2026-11-19"><main>
-<h1>QLD 닮은 날 TOP5</h1>
-<p class="sub">2026-11-19(목) 미국 마감 기준 · v14가 보는 다섯 값으로 찾은 과거</p>
-<div class="band" id="stale"></div>
-<div class="card today"><div class="rk"><span class="dt">오늘 11/19</span></div><div class="chips">
-<span class="chip">부스터 안 함</span>
-<span class="chip on">덜어두기2 켜짐</span>
-<span class="chip">NFCI 꺼짐</span>
-</div><div class="vals">
-<span class="k">MMTW</span><span class="v">21.0</span><span class="h">부스터 문 1: 20 밑 1단 · 10 밑 2단</span>
-<span class="k">QLD 낙폭</span><span class="v">−29.3%</span><span class="h">부스터 문 2: -15% 이하</span>
-<span class="k">나스닥100 200일선</span><span class="v">−5.5%</span><span class="h">덜어두기2: 선 밑</span>
-<span class="k">20일 변동성</span><span class="v">+34.6%</span><span class="h">덜어두기2: 25% 넘음</span>
-<span class="k">NFCI 백분위</span><span class="v">45.2</span><span class="h">NFCI 축소: 80 이상</span>
-</div></div>
-<h2>가장 닮은 과거 다섯 날</h2>
-<p class="note">v14 스위치가 오늘과 같은 날 130일 중에서 다섯 값이 가장 가까운 날. 같은 국면은 한 번만(앞뒤 30거래일), 최근 63거래일 제외.</p>
-<div class="card"><div class="rk"><span class="no">1</span><span class="dt">2018-12-10(월)</span><span class="dist">거리 0.36</span></div>
-<div class="chips"><span class="chip">부스터 안 함</span><span class="chip on">덜어두기2 켜짐</span><span class="chip">NFCI 꺼짐</span></div>
-<div class="cmp"><span></span><span class="hd">그날</span><span class="hd">오늘</span>
-<span class="k">MMTW</span><span class="v">22.9</span><span class="t">21.0</span>
-<span class="k">QLD 낙폭</span><span class="v">−25.8%</span><span class="t">−29.3%</span>
-<span class="k">나스닥100 200일선</span><span class="v">−5.6%</span><span class="t">−5.5%</span>
-<span class="k">20일 변동성</span><span class="v">+31.3%</span><span class="t">+34.6%</span>
-<span class="k">NFCI 백분위</span><span class="v">47.7</span><span class="t">45.2</span>
-</div><div class="out">
-<div class="o dn"><small>1달 뒤</small><b>−3.2%</b></div>
-<div class="o up"><small>3달 뒤</small><b>+15.5%</b></div>
-<div class="o up"><small>1년 뒤</small><b>+48.3%</b></div>
-<div class="o dn"><small>3달 안 최저</small><b>−22.5%</b></div>
-</div></div>
-<div class="card"><div class="rk"><span class="no">2</span><span class="dt">2011-09-09(금)</span><span class="dist">거리 0.53</span></div>
-<div class="chips"><span class="chip">부스터 안 함</span><span class="chip on">덜어두기2 켜짐</span><span class="chip">NFCI 꺼짐</span></div>
-<div class="cmp"><span></span><span class="hd">그날</span><span class="hd">오늘</span>
-<span class="k">MMTW</span><span class="v">25.2</span><span class="t">21.0</span>
-<span class="k">QLD 낙폭</span><span class="v">−38.9%</span><span class="t">−29.3%</span>
-<span class="k">나스닥100 200일선</span><span class="v">−5.4%</span><span class="t">−5.5%</span>
-<span class="k">20일 변동성</span><span class="v">+33.7%</span><span class="t">+34.6%</span>
-<span class="k">NFCI 백분위</span><span class="v">47.7</span><span class="t">45.2</span>
-</div><div class="out">
-<div class="o up"><small>1달 뒤</small><b>+10.2%</b></div>
-<div class="o up"><small>3달 뒤</small><b>+9.6%</b></div>
-<div class="o up"><small>1년 뒤</small><b>+61.6%</b></div>
-<div class="o dn"><small>3달 안 최저</small><b>−7.6%</b></div>
-</div></div>
-<div class="card"><div class="rk"><span class="no">3</span><span class="dt">2011-11-28(월)</span><span class="dist">거리 0.71</span></div>
-<div class="chips"><span class="chip">부스터 안 함</span><span class="chip on">덜어두기2 켜짐</span><span class="chip">NFCI 꺼짐</span></div>
-<div class="cmp"><span></span><span class="hd">그날</span><span class="hd">오늘</span>
-<span class="k">MMTW</span><span class="v">21.7</span><span class="t">21.0</span>
-<span class="k">QLD 낙폭</span><span class="v">−36.3%</span><span class="t">−29.3%</span>
-<span class="k">나스닥100 200일선</span><span class="v">−3.0%</span><span class="t">−5.5%</span>
-<span class="k">20일 변동성</span><span class="v">+28.7%</span><span class="t">+34.6%</span>
-<span class="k">NFCI 백분위</span><span class="v">51.6</span><span class="t">45.2</span>
-</div><div class="out">
-<div class="o up"><small>1달 뒤</small><b>+3.6%</b></div>
-<div class="o up"><small>3달 뒤</small><b>+38.4%</b></div>
-<div class="o up"><small>1년 뒤</small><b>+43.0%</b></div>
-<div class="o dn"><small>3달 안 최저</small><b>−1.2%</b></div>
-</div></div>
-<div class="card"><div class="rk"><span class="no">4</span><span class="dt">2025-03-28(금)</span><span class="dist">거리 1.19</span></div>
-<div class="chips"><span class="chip">부스터 안 함</span><span class="chip on">덜어두기2 켜짐</span><span class="chip">NFCI 꺼짐</span></div>
-<div class="cmp"><span></span><span class="hd">그날</span><span class="hd">오늘</span>
-<span class="k">MMTW</span><span class="v">34.1</span><span class="t">21.0</span>
-<span class="k">QLD 낙폭</span><span class="v">−26.0%</span><span class="t">−29.3%</span>
-<span class="k">나스닥100 200일선</span><span class="v">−5.1%</span><span class="t">−5.5%</span>
-<span class="k">20일 변동성</span><span class="v">+27.8%</span><span class="t">+34.6%</span>
-<span class="k">NFCI 백분위</span><span class="v">19.4</span><span class="t">45.2</span>
-</div><div class="out">
-<div class="o dn"><small>1달 뒤</small><b>−0.4%</b></div>
-<div class="o up"><small>3달 뒤</small><b>+32.3%</b></div>
-<div class="o up"><small>1년 뒤</small><b>+37.2%</b></div>
-<div class="o dn"><small>3달 안 최저</small><b>−22.0%</b></div>
-</div></div>
-<div class="card"><div class="rk"><span class="no">5</span><span class="dt">2010-06-08(화)</span><span class="dist">거리 1.56</span></div>
-<div class="chips"><span class="chip">부스터 안 함</span><span class="chip on">덜어두기2 켜짐</span><span class="chip">NFCI 꺼짐</span></div>
-<div class="cmp"><span></span><span class="hd">그날</span><span class="hd">오늘</span>
-<span class="k">MMTW</span><span class="v">21.0</span><span class="t">21.0</span>
-<span class="k">QLD 낙폭</span><span class="v">−55.8%</span><span class="t">−29.3%</span>
-<span class="k">나스닥100 200일선</span><span class="v">−1.4%</span><span class="t">−5.5%</span>
-<span class="k">20일 변동성</span><span class="v">+29.1%</span><span class="t">+34.6%</span>
-<span class="k">NFCI 백분위</span><span class="v">23.9</span><span class="t">45.2</span>
-</div><div class="out">
-<div class="o dn"><small>1달 뒤</small><b>−0.3%</b></div>
-<div class="o up"><small>3달 뒤</small><b>+5.8%</b></div>
-<div class="o up"><small>1년 뒤</small><b>+56.0%</b></div>
-<div class="o dn"><small>3달 안 최저</small><b>−7.7%</b></div>
-</div></div>
-<h2>다섯 날 평균과 견주기</h2><div class="card"><div class="sum"><span></span><span class="hd">1달</span><span class="hd">3달</span><span class="hd">1년</span>
-<span class="k">닮은 다섯 날</span><span class="v">+2.0%</span><span class="v">+20.3%</span><span class="v">+49.2%</span>
-<span class="k">스위치 같은 모든 날</span><span class="v">+5.9%</span><span class="v">+23.2%</span><span class="v">+60.4%</span>
-<span class="k">2006~ 아무 날</span><span class="v">+2.5%</span><span class="v">+7.6%</span><span class="v">+32.7%</span>
-</div>
-<p class="note">⚠ 참고 그림입니다. 2010년부터 매달 같은 방법으로 «닮은 다섯 날 평균»과 실제 결과를 맞대 보니 상관이 3달 0.12 · 1년 -0.05, 평소보다 높을지 낮을지 맞힌 비율 3달 61% · 1년 48%(반반이면 50%). 이 숫자로 사고팔 근거는 못 됩니다.</p>
-</div>
-<details><summary>어떻게 고르나</summary><ul><li>다섯 값: MMTW · QLD 전고점(2006년 이후 종가 최고) 대비 낙폭 · 나스닥100의 200일선 위치 · 나스닥100 20일 변동성(연율) · NFCI 리스크 3년 백분위(발표 7일 늦음). 전부 v14 배포 봇과 같은 정의.</li><li>먼저 v14 스위치(부스터 0·1·2단 · 덜어두기2 · NFCI 축소)가 오늘과 같은 날만 남기고, 다섯 값을 저마다 전체 흩어짐(표준편차)으로 나눠 거리를 잽니다.</li><li>«3달 안 최저»는 그다음 날부터 63거래일 안에서 가장 낮았던 종가. «진행 중»은 아직 그만큼 시간이 안 지난 것.</li><li>QLD 가격은 분할만 반영한 종가(배당 미반영). 매일 미국 마감 뒤 아침에 다시 만듭니다.</li></ul></details>
-<p class="foot">자료: QLD·나스닥100 종가 FinanceDataReader · MMTW 트뷰 INDEX:MMTW(2002~ 보관본) · NFCI FRED NFCIRISK. 만든 시각 2026-11-20 18:20 KST · kiwoom/qld_analog</p>
-</main><script>(function(){try{var b=document.body.getAttribute("data-built");var h=(Date.now()-Date.parse(b))/36e5;if(h>100){var e=document.getElementById("stale");e.style.display="block";e.textContent="이 페이지가 "+Math.floor(h/24)+"일째 안 바뀌었어요. 집 컴퓨터 자동 갱신이 멈췄을 수 있어요.";}}catch(x){}})();</script></body></html>
+.load{color:var(--mute);padding:30px 0;text-align:center}
+</style></head><body><main><h1>QLD 닮은 날 TOP5</h1><p class="sub" id="sub">불러오는 중…</p><div class="nav"><button id="prev" aria-label="앞 거래일">◀</button><input type="date" id="pick" aria-label="날짜 고르기"><button id="next" aria-label="다음 거래일">▶</button><button id="last" class="last">최근</button></div><div class="band" id="stale"></div><div id="view"><p class="load">불러오는 중…</p></div><details><summary>어떻게 고르나</summary><ul><li>다섯 값: MMTW · QLD 전고점(2006년 이후 종가 최고) 대비 낙폭 · 나스닥100의 200일선 위치 · 나스닥100 20일 변동성(연율) · NFCI 리스크 3년 백분위(발표 7일 늦음). 전부 v14 배포 봇과 같은 정의.</li><li>그날 이전 자료만 씁니다. v14 스위치(부스터 0·1·2단 · 덜어두기2 · NFCI 축소)가 같은 날만 남기고, 다섯 값을 저마다 그날까지의 흩어짐(표준편차)으로 나눠 거리를 잽니다.</li><li>기록은 날마다 쌓이고 한 번 적은 날의 다섯 날은 다시 바꾸지 않습니다. 2007년 이후는 같은 방법으로 거슬러 채웠습니다(<span id="cnt"></span>).</li><li>«3달 안 최저»는 그다음 날부터 63거래일 안에서 가장 낮았던 종가. «진행 중»은 아직 그만큼 시간이 안 지난 것.</li><li>QLD 가격은 분할만 반영한 종가(배당 미반영). 매일 미국 마감 뒤 아침에 덧붙입니다.</li></ul></details><p class="foot">자료: QLD·나스닥100 종가 FinanceDataReader · MMTW 트뷰 INDEX:MMTW(2002~ 보관본) · NFCI FRED NFCIRISK. 만든 시각 <span id="made"></span> KST · kiwoom/qld_analog</p></main><script>
+(function(){
+var WD="일월화수목금토", T=null, M=null, IX={}, PK={}, cur=null;
+function q(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function wd(d){var t=new Date(d+"T12:00:00Z");return d+"("+WD[t.getUTCDay()]+")";}
+function fmt(v,u){if(v===null||v===undefined||isNaN(v))return "—";var s=(u==="%"?(v>0?"+":"")+v.toFixed(1):v.toFixed(1));return s.replace("-","−")+(u||"");}
+function cls(v){return (v===null||v===undefined)?"na":(v>0?"up":"dn");}
+function sw(a){return [["부스터 "+(a[0]?a[0]+"단":"안 함"),a[0]>0],["덜어두기2 "+(a[1]?"켜짐":"꺼짐"),a[1]==1],["NFCI "+(a[2]?"축소":"꺼짐"),a[2]==1]];}
+function chips(a){return '<div class="chips">'+sw(a).map(function(x){return '<span class="chip'+(x[1]?" on":"")+'">'+esc(x[0])+'</span>';}).join("")+'</div>';}
+function outs(i,lab4){var k=[["m1","1달 뒤"],["m3","3달 뒤"],["y1","1년 뒤"],["low3",lab4||"3달 안 최저"]];
+ return '<div class="out">'+k.map(function(x){var v=T[x[0]][i];return '<div class="o '+cls(v)+'"><small>'+x[1]+'</small><b>'+(v===null?"진행 중":fmt(v,"%"))+'</b></div>';}).join("")+'</div>';}
+function mean(a){var s=0,n=0;a.forEach(function(v){if(v!==null&&!isNaN(v)){s+=v;n++;}});return n?s/n:null;}
+function getYear(y){if(PK[y])return Promise.resolve(PK[y]);return fetch("data/picks_"+y+".json",{cache:"no-cache"}).then(function(r){return r.json();}).then(function(j){PK[y]=j;return j;});}
+function snap(d){ // 그날 이전 가장 가까운 기록 날짜
+ if(d>M.last)d=M.last; if(d<M.first)d=M.first;
+ var lo=0,hi=T.d.length-1,ans=-1;while(lo<=hi){var m=(lo+hi)>>1;if(T.d[m]<=d){ans=m;lo=m+1;}else hi=m-1;}
+ var x=T.d[Math.max(ans,0)]; return x<M.first?M.first:x;}
+function step(n){var i=IX[cur]+n;if(i<0||i>=T.d.length)return;var d=T.d[i];if(d<M.first)return;go(d);}
+function go(d){d=snap(d);cur=d;if(location.hash.slice(1)!==d)history.replaceState(null,"","#"+d);
+ q("pick").value=d;q("prev").disabled=d<=M.first;q("next").disabled=d>=M.last;q("last").disabled=d>=M.last;
+ getYear(+d.slice(0,4)).then(function(P){render(d,P[d]);}).catch(function(e){q("view").innerHTML='<p class="load">기록을 못 읽었어요: '+esc(e)+'</p>';});}
+function render(d,E){
+ var V=q("view"); if(!E){V.innerHTML='<p class="load">이 날은 기록이 없어요.</p>';return;}
+ var t=IX[d], isLast=(d===M.last), A=M.axes, h=[];
+ q("sub").textContent=wd(d)+" 미국 마감 기준 · v14가 보는 다섯 값으로 찾은 과거";
+ h.push('<div class="card ref"><div class="rk"><span class="dt">'+(isLast?"최근 ":"그날 ")+esc(d.slice(5).replace("-","/"))+'</span></div>'+chips(E.sw)+'<div class="vals">');
+ A.forEach(function(a,j){h.push('<span class="k">'+esc(a.name)+'</span><span class="v">'+fmt(E.v[j],a.unit)+'</span><span class="h">'+esc(a.hint)+'</span>');});
+ h.push('</div><p class="lab">'+(isLast?"이날 뒤 QLD (아직 진행 중)":"이날 뒤 QLD 실제")+'</p>'+outs(t)+'</div>');
+ var nSame=0;for(var j=0;j<=t-M.excl;j++){if(T.boost[j]==E.sw[0]&&T.tv[j]==E.sw[1]&&T.nf[j]==E.sw[2])nSame++;}
+ h.push('<h2>가장 닮은 과거 다섯 날</h2><p class="note">그날 이전 자료만으로 고른 것. v14 스위치가 같은 날 '+nSame+'일 중 다섯 값이 가장 가까운 날, 같은 국면은 한 번만(앞뒤 '+M.gap+'거래일), 최근 '+M.excl+'거래일 제외. 날짜를 누르면 그날로 갑니다.</p>');
+ E.p.forEach(function(p,n){var i=IX[p[0]];
+  h.push('<div class="card"><div class="rk"><span class="no">'+(n+1)+'</span><span class="dt"><a href="#'+p[0]+'">'+esc(wd(p[0]))+'</a></span><span class="dist">거리 '+p[1].toFixed(2)+'</span>'+(p[2]?'':'<span class="diff">스위치 다름</span>')+'</div>');
+  h.push(chips([T.boost[i],T.tv[i],T.nf[i]]));
+  h.push('<div class="cmp"><span></span><span class="hd">그 날</span><span class="hd">'+(isLast?"최근":"기준일")+'</span>');
+  A.forEach(function(a,j){h.push('<span class="k">'+esc(a.name)+'</span><span class="v">'+fmt(T[a.k][i],a.unit)+'</span><span class="t">'+fmt(E.v[j],a.unit)+'</span>');});
+  h.push('</div>'+outs(i)+'</div>');});
+ var ks=["m1","m3","y1"];
+ function row(lab,idx,me){return '<span class="k'+(me?" me":"")+'">'+esc(lab)+'</span>'+ks.map(function(k){var v=mean(idx.map(function(i){return T[k][i];}));return '<span class="v'+(me?" me":"")+'">'+(v===null?"—":fmt(v,"%"))+'</span>';}).join("");}
+ var pi=E.p.map(function(p){return IX[p[0]];}), si=[], ai=[];
+ for(var j=0;j<=t-M.excl;j++){ai.push(j);if(T.boost[j]==E.sw[0]&&T.tv[j]==E.sw[1]&&T.nf[j]==E.sw[2])si.push(j);}
+ h.push('<h2>다섯 날 평균과 견주기</h2><div class="card"><div class="sum"><span></span><span class="hd">1달</span><span class="hd">3달</span><span class="hd">1년</span>');
+ h.push(row("닮은 다섯 날",pi)+row("그 전 같은 스위치 날",si)+row("그 전 아무 날",ai)+row(isLast?"이날 실제(진행 중)":"이날 실제",[t],true));
+ h.push('</div>');
+ var c=M.check||{};if(c.m3&&c.y1){h.push('<p class="note">⚠ 참고 그림입니다. 2010년부터 매달 같은 방법으로 «닮은 다섯 날 평균»과 실제를 맞대 보니 상관이 3달 '+c.m3.r.toFixed(2)+' · 1년 '+c.y1.r.toFixed(2)+', 평소보다 높을지 낮을지 맞힌 비율 3달 '+Math.round(c.m3.sign_vs_base)+'% · 1년 '+Math.round(c.y1.sign_vs_base)+'%(반반이면 50%). 이 숫자로 사고팔 근거는 못 됩니다.</p>');}
+ h.push('</div>');
+ V.innerHTML=h.join(""); window.scrollTo(0,0);}
+Promise.all([fetch("data/table.json",{cache:"no-cache"}).then(function(r){return r.json();}),fetch("data/meta.json",{cache:"no-cache"}).then(function(r){return r.json();})]).then(function(x){
+ T=x[0];M=x[1];T.d.forEach(function(d,i){IX[d]=i;});
+ var p=q("pick");p.min=M.first;p.max=M.last;
+ p.addEventListener("change",function(){if(p.value)go(p.value);});
+ q("prev").onclick=function(){step(-1);};q("next").onclick=function(){step(1);};q("last").onclick=function(){go(M.last);};
+ window.addEventListener("hashchange",function(){var h=location.hash.slice(1);if(/^\d{4}-\d{2}-\d{2}$/.test(h)&&h!==cur)go(h);});
+ q("made").textContent=M.made.replace("T"," ").slice(0,16);
+ q("cnt").textContent=(T.d.length-IX[M.first])+"일";
+ var h=(Date.now()-Date.parse(M.made))/36e5;if(h>100){var e=q("stale");e.style.display="block";e.textContent="이 페이지가 "+Math.floor(h/24)+"일째 안 바뀌었어요. 집 컴퓨터 자동 갱신이 멈췄을 수 있어요.";}
+ var h0=location.hash.slice(1);go(/^\d{4}-\d{2}-\d{2}$/.test(h0)?h0:M.last);
+}).catch(function(e){q("view").innerHTML='<p class="load">자료를 못 읽었어요: '+esc(e)+'</p>';});
+})();
+</script></body></html>
